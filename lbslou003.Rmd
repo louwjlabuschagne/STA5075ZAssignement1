@@ -4,7 +4,8 @@ subtitle: "Investigating Globular Clusters and Galaxies"
 author: "Louwrens Labuschagne - LBSLOU003"
 institute: "Department of Statistical Sciences, University of Cape Twon"
 date:  "`r format(Sys.time(), '%d %B %Y')`"
-output: html_document
+output: pdf_document
+bibliography: bibliography.bib
 ---
 
 ```{r setup, include=FALSE}
@@ -13,6 +14,19 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 ## Introduction
+
+### Background
+The catalog we will be investigating (@catalog) is based on a literature survey to the end of 2012 and consists of 422 galaxies with published measurements of their globular cluster (GC) populations. The galaxy morphological classification of these consist of 248 E galaxies, 93 S0 galaxies, and 81 spirals or irregulars. [@1_harris_harris_alessi_2013] To gain some insight into these morphological classification types we take a look at how the types look in Figure \ref{fig:HubbleTuningFork}, @hubbleClassificationScheme.
+
+``` {r eval=T, echo=F, plot-ref, fig.cap = "Galaxy Morphological Classification a.k.a. Hubble Tuning Fork\\label{fig:HubbleTuningFork}", echo = FALSE}
+```
+\begin{figure}[h]
+	\label{fig:HubbleTuningFork}
+	\center
+	\includegraphics[width=0.7\textwidth]{assets/HubbleTuningFork.jpg}
+	\caption{Galaxy Morphological Classification a.k.a. Hubble Tuning Fork}
+\end{figure}
+
 
 ## Data Gathering And Cleaning
 
@@ -30,5 +44,6 @@ knitr::opts_chunk$set(echo = FALSE)
 ### absolute visual magnitude and type of galaxy
 
 ## Conclusions
+Look at NGC221 M32 as N(GC) = 0 - An exception is the Local Group elliptical M32, which we include for historical reasons though it has no clearly identified clusters.
 
 ## References

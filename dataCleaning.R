@@ -5,7 +5,7 @@ headers = c("Galaxy.Name", #Galaxy identification
             "RA.hr", #Galaxy right ascension (decimal hours)
             "DEC.deg", #declination (decimal degrees)
             "Morphological.Type", #Morphological type
-            "Distance.Mpc", #Galaxy distance, 
+            "Distance.Mpc", #Galaxy distance,  pc is a parsec and is equal to about 3.26 light-years, 31 trillion kilometres, Mpc is 10^6*pc
             "Distance.uncertainty", #Galaxy distance uncertainty
             "Distance.estimation.Method", #distance estimation method adopted
             "Foreground.Extinction.A_V", #Foreground extinction,
