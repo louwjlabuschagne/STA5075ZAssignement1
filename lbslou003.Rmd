@@ -1,0 +1,34 @@
+---
+title: "Statistical Computing: Assignment 1"
+subtitle: "Investigating Globular Clusters and Galaxies"
+author: "Louwrens Labuschagne - LBSLOU003"
+institute: "Department of Statistical Sciences, University of Cape Twon"
+date:  "`r format(Sys.time(), '%d %B %Y')`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+ 
+```
+
+## Introduction
+
+## Data Gathering And Cleaning
+
+
+```{r echo=F, eval=T, code = readLines("dataCleaning.R")}
+```
+
+## Analysis
+### central black hole mass
+
+### dynamical bulge mass
+
+### bulge velocity dispersion
+
+### absolute visual magnitude and type of galaxy
+
+## Conclusions
+
+## References
