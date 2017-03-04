@@ -5,7 +5,7 @@ author: "Louwrens Labuschagne - LBSLOU003"
 institute: "Department of Statistical Sciences, University of Cape Twon"
 date:  "`r format(Sys.time(), '%d %B %Y')`"
 output: pdf_document
-bibliography: bibliography.bib
+#bibliography: bibliography.bib
 ---
 
 ```{r setup, include=FALSE}
@@ -16,7 +16,7 @@ knitr::opts_chunk$set(echo = FALSE)
 ## Introduction
 
 ### Background
-The catalog we will be investigating (@catalog) is based on a literature survey to the end of 2012 and consists of 422 galaxies with published measurements of their globular cluster (GC) populations. The galaxy morphological classification of these consist of 248 E galaxies, 93 S0 galaxies, and 81 spirals or irregulars. [@1_harris_harris_alessi_2013] To gain some insight into these morphological classification types we take a look at how the types look in Figure \ref{fig:HubbleTuningFork}, @hubbleClassificationScheme.
+A globular cluster is a spherical collection of stars that orbits a galactic core as a satellite. The catalog we will be investigating (@catalog) is based on a literature survey to the end of 2012 and consists of 422 galaxies with published measurements of their globular cluster (GC) populations. The galaxy morphological classification of these consist of 248 E galaxies, 93 S0 galaxies, and 81 spirals or irregulars. [@1_harris_harris_alessi_2013] To gain some insight into these morphological classification types we take a look at how the types look in Figure \ref{fig:HubbleTuningFork}, @hubbleClassificationScheme.
 
 ``` {r eval=T, echo=F, plot-ref, fig.cap = "Galaxy Morphological Classification a.k.a. Hubble Tuning Fork\\label{fig:HubbleTuningFork}", echo = FALSE}
 ```
@@ -28,13 +28,97 @@ The catalog we will be investigating (@catalog) is based on a literature survey 
 \end{figure}
 
 
+The majority of GCs, in both the Milky Way and other galaxies, contain primarily old stars. Their metallicities range from extremely metal-poor (less than 1/100th of the solar value) up to values close to what we see in the Sun. It is this variation in metallicity that gives rise to the two distinct types of GC in galaxies. In the Milky Way at least, the redder GCs are more metal-rich and associated with the galactic bulge, while the bluer GCs are more metal-poor and tend to be associated with the halo. @2_stellar_populations_of_globular_clusters_cosmos_2017
+
+
+
 ## Data Gathering And Cleaning
-
-
 ```{r echo=F, eval=T, code = readLines("dataCleaning.R")}
+
 ```
 
-## Analysis
+Data cleaning is done in dataCleaning.R 
+
+1.  `read.table` from website
+2.  define headers as below
+3.  convert `nid` to `NA`
+4.  convert `nd` to `NA`
+5.  detected `>3` in NGC column and forced to 3
+6.  convert factors that will be used numerically to numbers
+
+
+
+Use grep to convert types to S, E and L
+
+## Analysis	
+
+M_V, 
+M_V, T
+
+sigma,
+sigma, T
+
+M_BH,
+M_BH, T
+
+M_dyn,
+M_dyn, T
+
+
+M_V, sigma
+M_V, M_BH
+M_V, M_dyn
+
+M_V, sigma, M_BH
+M_V, sigma, M_dyn
+M_V, sigma, T
+M_V, M_BH, M_dyn
+M_V, M_BH, T
+M_V, M_dyn, T
+
+M_V, sigma, M_BH, M_dyn
+M_V, sigma, M_BH, T
+M_V, sigma, M_dyn, T
+M_V, M_BH, M_dyn, T
+
+M_V, sigma, M_BH, M_dyn, T
+
+sigma, M_BH
+sigma, M_dyn
+
+sigma, M_BH, M_dyn
+sigma, M_BH, T
+sigma, M_dyn, T
+
+sigma, M_BH, M_dyn, T
+
+M_BH, M_dyn
+
+M_BH, M_dyn, T
+
+1.	Plot first and see if linear assumption is valid, if not we transform
+
+
+
+2. Multiple R-squared - tells us in percentage how much of variation in our input varables tells us about our estimation. 
+
+Parameter  				| Definition
+------------- 			| -------------
+$N_{GC}$  				| Number of Globular Clusters
+$T$           | Galaxy Type E, S or I
+$M_V$					| Absolute visual magnitude
+$\sigma$ 				| Bulge velocity dispersion
+$M_{BH}$				| Central black hole mass
+$M_{dyn}$ 				| Dynamical mass
+$\varepsilon_{N_{GC}}$  | Uncertainty in NGC
+$\varepsilon_{M_V}$		| Uncertainty in MV
+$\varepsilon_{\sigma}$ 	| Uncertainty in $\sigma$
+$\varepsilon_{M_{BH}}$	| Uncertainty in MBH
+
+```{r echo=T, eval=T}
+str(GCs)
+```
+
 ### central black hole mass
 
 ### dynamical bulge mass
@@ -43,7 +127,24 @@ The catalog we will be investigating (@catalog) is based on a literature survey 
 
 ### absolute visual magnitude and type of galaxy
 
+Interaction Questions:
+
+1.	Does this interaction make sense conceptually?
+2.	Is the interaction term statistically significant? are the slopes that differnt?
+summary(m1), p value of interaction term
+
+Needs to be yes for both questions to include.  
+
+### Extra
+
+Look at dSph KKS-55 at MVT = ???11.2 holding a single GC, while the largest are cD/BCG supergiants with MVT ??????24andholdingupto30,000GCseach. they are the smallest and largest
+
+One notorious outlier is our own Milky Way galaxy, for which there are far too many globular clusters given the mass of its central super- massive black hole, despite the fact that both are accurately measured. @1_de souza_hi lbe_buelens_riggs_cameron_ishida_chies-santos_killedar_2015
+
 ## Conclusions
+
+Check that you get the values in Table 2 @1_harris_harris_alessi_2013
+
 Look at NGC221 M32 as N(GC) = 0 - An exception is the Local Group elliptical M32, which we include for historical reasons though it has no clearly identified clusters.
 
 ## References
